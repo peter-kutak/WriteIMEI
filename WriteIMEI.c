@@ -5,6 +5,8 @@
    Questions to chuacw+imei@gmail.com
 
    -- chuacw, Singapore, 10 Jun 2014
+   
+   modification for Doogee X5max_PRO
 */
 
 #pragma hdrstop
@@ -33,7 +35,7 @@ char *GetFileName(const char *path)
 
 int calc_imei(char inp_imei[16], char out_imei[12])
 {
-    char out_mask[12] = {0xAB, 0xA0, 0x6F, 0x2F, 0x1F, 0x1E, 0x9A, 0x45, 0x0, 0x0, 0x0, 0x0};
+    char out_mask[12] = {0x16, 0xE5, 0xF4, 0xD1, 0xE8, 0x6A, 0x42, 0x00, 0x74, 0x79, 0x0, 0x0};
     int i=0, j=0;
 
     for (i=0, j=0; i < 15; i++, j++)
@@ -60,8 +62,8 @@ int calc_imei(char inp_imei[16], char out_imei[12])
 
     out_imei[j] = out_imei[j] ^ out_mask[j];
 
-    out_imei[8] = 0x57;
-    out_imei[9] = 0xDB;
+    out_imei[8] = 0x00 ^ out_mask[8];
+    out_imei[9] = 0x00 ^ out_mask[9];
 
     out_imei[10] = out_imei[11] = 0;
 
